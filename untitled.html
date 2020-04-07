@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Check the number</title>
+	<style type="text/css">
+		button{
+			color: #FF0000;
+			size: 80px;
+		}
+	</style>
+
+	<script type="text/javascript">
+	function Check(){
+		var a=document.getElementById("n").value;
+		if (a>0) {
+			if (a % 2 === 0) {
+				document.getElementById("a").innerHTML="Even number";
+			
+				}else{
+				document.getElementById("a").innerHTML="Not Even number";	
+				}
+			}
+		}else{
+			(a<=0)
+			document.getElementById("a").innerHTML = 'STOP';
+		}
+
+	</script>
+
+</head>
+
+<body>
+
+<p>Check the number:</p>	
+<input type="number" id="n">
+<button id="b" onclick="Check()">Go</button>
+<a id="a"></a>
+
+
+	
+
+
+</body>
+</html>

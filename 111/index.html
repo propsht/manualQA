@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+ div {
+   border: dotted;
+   padding: 15px 32px;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   margin: 4px 2px;
+ }
+ </style>
+</head>
+<body>
+
+<h1>The XMLHttpRequest Object</h1>
+<button type="button" onclick="loadDoc('ajax_radio_btn.txt')">Form with Radio Buttons</button> <br><br>
+<button type="button" onclick="loadDoc('ajax_dropDown_list.txt')">Form with Drop-Down List</button>
+<br>
+<br>
+
+<div id="demo">
+</div>
+
+<script>
+function loadDoc(docToLoad) {
+  var xhttp = new XMLHttpRequest(); //XMLHttpRequest is API, which provides to client functionality
+									//for data exchange between client and server. 
+									//This API provides a simple way to obtain data via specified link 
+									//without page reload.
+									//It makes possible to reload only a part of the page, without 
+									//interrupting the user.
+  
+  xhttp.open("GET", docToLoad, true); //open(method, url, async)
+                                      //Specifies the type of request 
+									  //method: the type of request: GET or POST
+                                      //url: the server (file) location
+                                      //async: true (asynchronous) or false (synchronous)
+									  //By sending asynchronously, the JavaScript does not have to wait for the server response.
+									  
+  
+  xhttp.onreadystatechange = function() { //The onreadystatechange event occurs each time 
+										  //when the readyState changes.
+										  
+    if (this.readyState == this.DONE && this.status == 200) {
+	
+	//XMLHttpRequest.readyState
+	//0 - UNSET - Object was created. Method open() wasn't called.
+	//1 - OPENED - Method open() was called.
+	//2 - HEADERS_RECEIVED - Method send() was called, headers and status are available.
+	//3 - LOADING - Loading; responseTest contains partial data.
+	//4 - DONE - Operation complete.
+	
+      document.getElementById("demo").innerHTML =
+      this.responseText; //responseText - response text from server. 
+    }
+  };
+  
+  xhttp.send(); //send() - Sends the request to the server (used for GET)
+                //send(string) - Sends the request to the server (used for POST)
+}
+</script>
+
+
+</body>
+</html>
